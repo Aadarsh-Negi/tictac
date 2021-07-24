@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void changC(View view) {
-        TextView res=findViewById(R.id.result);
         TextView cur = findViewById(view.getId());
         int val=Integer.parseInt(cur.getTag().toString());
         if(val!=-1){
