@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     finishAndRemoveTask();
                 }
             });
+            won.setCancelable(false);
             won.show();
 
 
