@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">tic3</string>
+    <string name="x_s_turn">X\'s turn</string>
+    <string name="reset">Reset</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+    <string name="exit">Exit</string>
+    <string name="enter_code">Enter code</string>
 </resources>
