@@ -1,18 +1,17 @@
 package com.example.tic3;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import static android.graphics.Color.BLACK;
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.RED;
 
-import android.content.DialogInterface;
-
+import android.annotation.SuppressLint;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-
 import android.view.View;
-
 import android.widget.TextView;
 
-import static android.graphics.Color.*;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     static work_done ck = new work_done();
 
 
+    @SuppressLint("SetTextI18n")
     public void changC(View view) {
         TextView cur = findViewById(view.getId());
         int val=Integer.parseInt(cur.getTag().toString());
@@ -63,18 +63,8 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder won = new AlertDialog.Builder(MainActivity.this);
             won.setTitle(title);
             won.setMessage("Do you want to play again.");
-            won.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    resetit(view);
-                }
-            });
-            won.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    finishAndRemoveTask();
-                }
-            });
+            won.setPositiveButton("Yes", (dialog, which) -> reset(view));
+            won.setNegativeButton("No", (dialog, which) -> System.exit(0));
             won.setCancelable(false);
             won.show();
 
@@ -136,35 +126,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void resetit(View view) {
+    public void reset(View view) {
         GradientDrawable sp = new GradientDrawable();
         sp.setColor(BLACK);
-        ((TextView) findViewById(R.id.a11)).setTag("-1");
-        ((TextView) findViewById(R.id.a11)).setBackground(sp);
-        ((TextView) findViewById(R.id.a11)).setClickable(true);
-        ((TextView) findViewById(R.id.a12)).setTag("-1");
-        ((TextView) findViewById(R.id.a12)).setClickable(true);
-        ((TextView) findViewById(R.id.a12)).setBackground(sp);
-        ((TextView) findViewById(R.id.a13)).setTag("-1");
-        ((TextView) findViewById(R.id.a13)).setClickable(true);
-        ((TextView) findViewById(R.id.a13)).setBackground(sp);
-        ((TextView) findViewById(R.id.a21)).setTag("-1");
-        ((TextView) findViewById(R.id.a21)).setClickable(true);
-        ((TextView) findViewById(R.id.a21)).setBackground(sp);
-        ((TextView) findViewById(R.id.a22)).setTag("-1");
-        ((TextView) findViewById(R.id.a22)).setClickable(true);
-        ((TextView) findViewById(R.id.a22)).setBackground(sp);
-        ((TextView) findViewById(R.id.a23)).setTag("-1");
-        ((TextView) findViewById(R.id.a23)).setClickable(true);
-        ((TextView) findViewById(R.id.a23)).setBackground(sp);
-        ((TextView) findViewById(R.id.a31)).setTag("-1");
-        ((TextView) findViewById(R.id.a31)).setClickable(true);
-        ((TextView) findViewById(R.id.a31)).setBackground(sp);
-        ((TextView) findViewById(R.id.a32)).setTag("-1");
-        ((TextView) findViewById(R.id.a32)).setClickable(true);
-        ((TextView) findViewById(R.id.a32)).setBackground(sp);
-        ((TextView) findViewById(R.id.a33)).setTag("-1");
-        ((TextView) findViewById(R.id.a33)).setClickable(true);
-        ((TextView) findViewById(R.id.a33)).setBackground(sp);
+        findViewById(R.id.a11).setTag("-1");
+        findViewById(R.id.a11).setBackground(sp);
+        findViewById(R.id.a11).setClickable(true);
+        findViewById(R.id.a12).setTag("-1");
+        findViewById(R.id.a12).setClickable(true);
+        findViewById(R.id.a12).setBackground(sp);
+        findViewById(R.id.a13).setTag("-1");
+        findViewById(R.id.a13).setClickable(true);
+        findViewById(R.id.a13).setBackground(sp);
+        findViewById(R.id.a21).setTag("-1");
+        findViewById(R.id.a21).setClickable(true);
+        findViewById(R.id.a21).setBackground(sp);
+        findViewById(R.id.a22).setTag("-1");
+        findViewById(R.id.a22).setClickable(true);
+        findViewById(R.id.a22).setBackground(sp);
+        findViewById(R.id.a23).setTag("-1");
+        findViewById(R.id.a23).setClickable(true);
+        findViewById(R.id.a23).setBackground(sp);
+        findViewById(R.id.a31).setTag("-1");
+        findViewById(R.id.a31).setClickable(true);
+        findViewById(R.id.a31).setBackground(sp);
+        findViewById(R.id.a32).setTag("-1");
+        findViewById(R.id.a32).setClickable(true);
+        findViewById(R.id.a32).setBackground(sp);
+        findViewById(R.id.a33).setTag("-1");
+        findViewById(R.id.a33).setClickable(true);
+        findViewById(R.id.a33).setBackground(sp);
     }
 }
