@@ -36,8 +36,6 @@ public class online extends AppCompatActivity{
     Button Join;
     EditText code;
 
-
-//    private DatabaseReference database;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("code");
     DatabaseReference pos = database.getReference("pos");
@@ -53,6 +51,8 @@ public class online extends AppCompatActivity{
     }
 
     public void create_code(View view) {
+        myRef.removeValue();
+        pos.removeValue();
         String cdx = code.getText().toString();
         setContentView(R.layout.online_play);
         myRef.setValue(cdx);
@@ -61,23 +61,18 @@ public class online extends AppCompatActivity{
 
 
     }
-    static work_done ck = new work_done();
-
+    int prev = 1;
     public void make_move(View view) {
-            if(turn==1){
-                changC(view);
-                pos.setValue(view.getId());
-                turn=0;
-            }else{
-                Toast.makeText(getApplicationContext(),"wait for your turn",Toast.LENGTH_LONG).show();
-            }
+                if(view!=null) {
+                    changC(view);
+                    pos.setValue(view.getId());
+                }
 
             pos.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     int val = snapshot.getValue(Integer.class);
                     changC(findViewById(val));
-                    turn = 1;
                 }
 
                 @Override
@@ -90,7 +85,6 @@ public class online extends AppCompatActivity{
 
     public void join_room(View view) {
         String cdx = code.getText().toString();
-        turn=0;
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -107,7 +101,24 @@ public class online extends AppCompatActivity{
 
             }
         });
-        make_move(null);
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pos.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int val = snapshot.getValue(Integer.class);
+                        changC(findViewById(val));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        }, 5000);
     }
     public void changC(View view) {
         TextView cur = findViewById(view.getId());
@@ -117,7 +128,7 @@ public class online extends AppCompatActivity{
         }
         GradientDrawable sp = new GradientDrawable();
         TextView stat = findViewById(R.id.stat);
-        if(ck.ChangeIt()){
+        if(prev==1){
             sp.setColor(RED);
             cur.setText("O");
             cur.setTag("2");
@@ -154,6 +165,7 @@ public class online extends AppCompatActivity{
 
 
         }
+        prev^=1;
 
 
 

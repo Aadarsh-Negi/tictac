@@ -21,9 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    static work_done ck = new work_done();
-
+    int prev=1;
 
     @SuppressLint("SetTextI18n")
     public void changC(View view) {
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         }
           GradientDrawable sp = new GradientDrawable();
           TextView stat = findViewById(R.id.stat);
-        if(ck.ChangeIt()){
+        if(prev==1){
             sp.setColor(RED);
             cur.setText("O");
             cur.setTag("2");
@@ -47,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             cur.setTag("1");
             stat.setText("0's turn");
         }
+        prev= prev ^ 1;
         view.setBackground(sp);
         int verdict=IsItOver();
         if(verdict>0){
