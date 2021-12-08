@@ -1,6 +1,6 @@
 # Tic-tac-toe
-Two player game with both online and offline features
-
+Two player game with both online and offline features.
+Complete android app is implemented in Java and firebase realtime database is used for online feature.
 
 ![vlcsnap-2021-12-08-21h16m27s646](https://user-images.githubusercontent.com/24971553/145238579-a6bd78cd-e39b-426b-9eab-80be32a3fcfe.png)
 
