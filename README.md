@@ -8,4 +8,4 @@ Complete android app is implemented in Java and firebase realtime database is us
 
 ![vlcsnap-2021-12-08-21h15m38s804](https://user-images.githubusercontent.com/24971553/145238600-94b254f4-20e5-4ef5-b034-0b53a177255f.png)
 
-Demo - https://youtu.be/DK1Cq3Vm6vw
+Video - https://youtu.be/DK1Cq3Vm6vw
